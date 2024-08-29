@@ -2,22 +2,34 @@ import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+const githubOrg = 'static-sites-0U7kj6L';
+const githubRepo = 'docs';
+
+const netlifySiteName = 'static-sites-0u7kj6l-docs';
+
+// Whether the site is being deployed to Netlify. This affects parts of the config.
+const deployingToNetlify = process.env['DEPLOYING_TO_NETLIFY'] === 'TRUE' || false;
+
 const config: Config = {
   title: 'My Site',
   tagline: 'Dinosaurs are cool',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://static-sites-0U7kj6L.github.io/',
+  url: deployingToNetlify ? `https://${netlifySiteName}.netlify.app` : `https://${githubOrg}.github.io/`,
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/docs',
+  baseUrl: deployingToNetlify ? `/` : `/${githubRepo}`,
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'static-sites-0U7kj6L', // Usually your GitHub org/user name.
-  projectName: 'docs', // Usually your repo name.
+  organizationName: githubOrg, // Usually your GitHub org/user name.
+  projectName: githubRepo, // Usually your repo name.
   trailingSlash: false,
+
+  // If we're deploying to Netlify, we don't want search engines to index us. This lets us use some other deployment
+  // destination for production. In this case, that's GitHub Pages.
+  noIndex: deployingToNetlify,
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
