@@ -52,8 +52,8 @@ const config: Config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          path: 'docs',
-          routeBasePath: '/',
+          path: 'docs', // Remove this if we don't need it (maybe it would default to 'docs'?)
+          routeBasePath: deployingToNetlify ? 'docs' : '/',
         },
         blog: {
           showReadingTime: true,
