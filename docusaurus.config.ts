@@ -12,7 +12,7 @@ const deployingToNetlify = process.env['DEPLOYING_TO_NETLIFY'] === 'TRUE' || fal
 
 const config: Config = {
   title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'A super awesome site',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
